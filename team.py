@@ -1,10 +1,13 @@
 
 from tqdm import tqdm
 
-PART_SIZE=100
+PART_SIZE=8
 
 def solve(teams, pizzas):
     for team in tqdm(teams):
+        if len(pizzas) < 1:
+            print('done--------------')
+            break
         maxScore = 0
         maxScoreIdx = 0
         for i, pizza in enumerate(pizzas[0:PART_SIZE]):
@@ -12,8 +15,8 @@ def solve(teams, pizzas):
             if score > maxScore:
                 maxScore = score
                 maxScoreIdx = i
-        team.add(pizzas[i])
-        pizzas.pop(i)
+        team.add(pizzas[maxScoreIdx])
+        pizzas.pop(maxScoreIdx)
 
 class Team():
     def __init__(self, cap):
@@ -21,20 +24,21 @@ class Team():
         self.pizzas = []
         self.ings = set()
 
-    @staticmethod
-    def calcScore(pizzas):
-        uniq = set.union( [p.ings for p in pizzas] )
-        total = 0
-        for p in pizzas:
-            total += p.count
-        return len(uniq) / total
+    # @staticmethod
+    # def calcScore(pizzas):
+    #     uniq = set.union( [p.ings for p in pizzas] )
+    #     total = 0
+    #     for p in pizzas:
+    #         total += p.count
+    #     return len(uniq) / total
 
     def calcSc(self, pizza):
         uniq = self.ings.union(pizza.ings)
         total = pizza.count
         for p in self.pizzas:
             total += p.count
-        return len(uniq) / total
+        sc = len(uniq) / (total)
+        return sc
 
     def add(self, pizza):
         assert 1 + len(self.pizzas) <= self.cap

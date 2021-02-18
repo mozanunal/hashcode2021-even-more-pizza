@@ -40,49 +40,48 @@ def readF(filename):
 
 def outF(filename, teamL2, teamL3, teamL4):
     f = open(filename, 'w+')
-    f.write(str( len(teamL2)+len(teamL3)+len(teamL4)) + '\n')
+    nLine = 0
     for team in teamL4+teamL3+teamL2:
-        s = ' '.join( [str(p.index) for p in team.pizzas ] )
-        f.write( '{} {}\n'.format(team.cap , s) )
+        if team.is_full:
+            nLine += 1 
+    f.write(str( nLine ) + '\n')
+    for team in teamL4+teamL3+teamL2:
+        if team.is_full:
+            s = ' '.join( [str(p.index) for p in team.pizzas ] )
+            f.write( '{} {}\n'.format(team.cap , s) )
     f.close()
 
+def solveAll(filename):
+    nPizza, n2, n3, n4, pizzaL, teamL2, teamL3, teamL4 = readF(filename)
+    pizzaLSorted = sorted(pizzaL, key=operator.attrgetter('count'), reverse=True)
+    #### initial add start ########
+    it = iter(pizzaLSorted)
+    for i in range(n4):
+        teamL4[i].add(next(it))
+    for i in range(n3):
+        teamL3[i].add(next(it))
+    for i in range(n2):
+        teamL2[i].add(next(it))
+    pizzaLSortedFilt = pizzaLSorted[n4+n3+n2:]
+    #### initial add finish ########
 
-filename = 'data/a_example.in'
-# readF("data/a_example.in")
-# readF("data/b_little_bit_of_everything.in")
-# readF("data/c_many_ingredients.in")
-# readF("data/d_many_pizzas.in")
-# readF("data/e_many_teams.in")
+    if solve(teamL4, pizzaLSortedFilt):
+        return
+    if solve(teamL4, pizzaLSortedFilt):
+        return
+    if solve(teamL4, pizzaLSortedFilt):
+        return
+    if solve(teamL3, pizzaLSortedFilt):
+        return
+    if solve(teamL3, pizzaLSortedFilt):
+        return
+    if solve(teamL2, pizzaLSortedFilt):
+        return
 
-PART_SIZE=100
-nPizza, n2, n3, n4, pizzaL, teamL2, teamL3, teamL4 = readF("data/d_many_pizzas.in")
-pizzaLSorted = sorted(pizzaL, key=operator.attrgetter('count'), reverse=True)
-#### initial add start ########
-it = iter(pizzaLSorted)
-for i in range(n4):
-    teamL4[i].add(next(it))
-for i in range(n3):
-    teamL3[i].add(next(it))
-for i in range(n2):
-    teamL2[i].add(next(it))
-pizzaLSortedFilt = pizzaLSorted[n4+n3+n2:]
-#### initial add finish ########
-
-solve(teamL4, pizzaLSortedFilt)
-solve(teamL4, pizzaLSortedFilt)
-solve(teamL4, pizzaLSortedFilt)
-solve(teamL3, pizzaLSortedFilt)
-solve(teamL3, pizzaLSortedFilt)
-solve(teamL2, pizzaLSortedFilt)
-
-outF('a.out', teamL2, teamL3, teamL4  )
+    outF( filename.replace('data/','')+'.out2', teamL2, teamL3, teamL4  )
 
 
-# pizzaLPart = pizzaL[0:PART_SIZE]
-
-# for pizzaI in tqdm(pizzaLPart):
-#     for pizzaJ in pizzaLPart:
-#         if pizzaI.score.get(pizzaJ.index) == None:
-#             score = pizzaI.calcScore(pizzaJ)
-#             pizzaI.score[pizzaJ.index] = score
-#             pizzaJ.score[pizzaI.index] = score
+solveAll("data/b_little_bit_of_everything.in")
+solveAll("data/c_many_ingredients.in")
+solveAll("data/d_many_pizzas.in")
+# solveAll("data/e_many_teams.in")
