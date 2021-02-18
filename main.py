@@ -34,10 +34,18 @@ def readF(filename):
     print('Nums:', n2,n3,n4 )
     print('Unique ings:', len(unqPizza))
     print('Total Cap:', n2*2 + n3*3 + n4*4 )
-
-    
+  
 
     return nPizza, n2, n3, n4, pizzaL, teamL2, teamL3, teamL4  
+
+def outF(filename, teamL2, teamL3, teamL4):
+    f = open(filename, 'w+')
+    f.write(str( len(teamL2)+len(teamL3)+len(teamL4)) + '\n')
+    for team in teamL4+teamL3+teamL2:
+        s = ' '.join( [str(p.index) for p in team.pizzas ] )
+        f.write( '{} {}\n'.format(team.cap , s) )
+    f.close()
+
 
 filename = 'data/a_example.in'
 # readF("data/a_example.in")
@@ -60,45 +68,15 @@ for i in range(n2):
 pizzaLSortedFilt = pizzaLSorted[n4+n3+n2:]
 #### initial add finish ########
 
+solve(teamL4, pizzaLSortedFilt)
+solve(teamL4, pizzaLSortedFilt)
+solve(teamL4, pizzaLSortedFilt)
+solve(teamL3, pizzaLSortedFilt)
+solve(teamL3, pizzaLSortedFilt)
+solve(teamL2, pizzaLSortedFilt)
 
-for team in tqdm(teamL4):
-    scoreList = []
-    maxScore = 0
-    maxScoreIdx = 0
-    for i, pizza in enumerate(pizzaLSortedFilt[0:PART_SIZE]):
-        score = team.calcSc(pizza)
-        if score > maxScore:
-            maxScore = score
-            maxScoreIdx = i
-    team.add(pizzaLSortedFilt[i])
-    pizzaLSortedFilt.pop(i)
+outF('a.out', teamL2, teamL3, teamL4  )
 
-for team in tqdm(teamL4):
-    scoreList = []
-    maxScore = 0
-    maxScoreIdx = 0
-    for i, pizza in enumerate(pizzaLSortedFilt[0:PART_SIZE]):
-        score = team.calcSc(pizza)
-        if score > maxScore:
-            maxScore = score
-            maxScoreIdx = i
-    team.add(pizzaLSortedFilt[i])
-    pizzaLSortedFilt.pop(i)
-
-for team in tqdm(teamL4):
-    scoreList = []
-    maxScore = 0
-    maxScoreIdx = 0
-    for i, pizza in enumerate(pizzaLSortedFilt[0:PART_SIZE]):
-        score = team.calcSc(pizza)
-        if score > maxScore:
-            maxScore = score
-            maxScoreIdx = i
-    team.add(pizzaLSortedFilt[i])
-    pizzaLSortedFilt.pop(i)
-
-
-print()
 
 # pizzaLPart = pizzaL[0:PART_SIZE]
 
