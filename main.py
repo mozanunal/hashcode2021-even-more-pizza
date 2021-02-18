@@ -56,22 +56,26 @@ def solveAll(filename):
     pizzaLSorted = sorted(pizzaL, key=operator.attrgetter('count'), reverse=True)
     #### initial add start ########
     it = iter(pizzaLSorted)
-    for i in range(n4):
+    for i in range(len(teamL4)):
         teamL4[i].add(next(it))
-    for i in range(n3):
+    pizzaLSorted = pizzaLSorted[n4:]
+    solve(teamL4, pizzaLSorted)
+    solve(teamL4, pizzaLSorted)
+    solve(teamL4, pizzaLSorted)
+    
+    it = iter(pizzaLSorted)
+    for i in range(len(teamL3)):
         teamL3[i].add(next(it))
-    for i in range(n2):
+    pizzaLSorted = pizzaLSorted[n3:]
+    solve(teamL3, pizzaLSorted)
+    solve(teamL3, pizzaLSorted)
+
+    it = iter(pizzaLSorted)
+    for i in range(len(teamL2)):
         teamL2[i].add(next(it))
-    pizzaLSortedFilt = pizzaLSorted[n4+n3+n2:]
-    #### initial add finish ########
-
-    solve(teamL4, pizzaLSortedFilt)
-    solve(teamL4, pizzaLSortedFilt)
-    solve(teamL4, pizzaLSortedFilt)
-    solve(teamL3, pizzaLSortedFilt)
-    solve(teamL3, pizzaLSortedFilt)
-    solve(teamL2, pizzaLSortedFilt)
-
+    pizzaLSorted = pizzaLSorted[n2:]
+    solve(teamL2, pizzaLSorted)
+  
     outF( filename.replace('data/','')+'.out', teamL2, teamL3, teamL4  )
 
 

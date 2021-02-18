@@ -33,6 +33,7 @@ class Team():
     #     return len(uniq) / total
 
     def calcSc(self, pizza):
+        comm = self.ings.intersection(pizza.ings)
         uniq = self.ings.union(pizza.ings)
         total = pizza.count
         for p in self.pizzas:
