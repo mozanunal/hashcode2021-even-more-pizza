@@ -65,20 +65,14 @@ def solveAll(filename):
     pizzaLSortedFilt = pizzaLSorted[n4+n3+n2:]
     #### initial add finish ########
 
-    if solve(teamL4, pizzaLSortedFilt):
-        return
-    if solve(teamL4, pizzaLSortedFilt):
-        return
-    if solve(teamL4, pizzaLSortedFilt):
-        return
-    if solve(teamL3, pizzaLSortedFilt):
-        return
-    if solve(teamL3, pizzaLSortedFilt):
-        return
-    if solve(teamL2, pizzaLSortedFilt):
-        return
+    solve(teamL4, pizzaLSortedFilt)
+    solve(teamL4, pizzaLSortedFilt)
+    solve(teamL4, pizzaLSortedFilt)
+    solve(teamL3, pizzaLSortedFilt)
+    solve(teamL3, pizzaLSortedFilt)
+    solve(teamL2, pizzaLSortedFilt)
 
-    outF( filename.replace('data/','')+'.out2', teamL2, teamL3, teamL4  )
+    outF( filename.replace('data/','')+'.out', teamL2, teamL3, teamL4  )
 
 
 solveAll("data/b_little_bit_of_everything.in")

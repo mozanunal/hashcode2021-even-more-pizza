@@ -1,7 +1,7 @@
 
 from tqdm import tqdm
 
-PART_SIZE=8
+PART_SIZE=256
 
 def solve(teams, pizzas):
     for team in tqdm(teams):
