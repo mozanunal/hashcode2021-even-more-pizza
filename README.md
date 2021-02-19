@@ -4,8 +4,8 @@
 
 It is our implementation for Hashcode 2021 practice question. It is a clean and readable 4 hours solution writen in **Python**.
 
-- [Competition Link](https://codingcompetitions.withgoogle.com/hashcode/)
-- [Past Competitions](https://codingcompetitions.withgoogle.com/hashcode/archive)
+* [Competition Link](https://codingcompetitions.withgoogle.com/hashcode/)
+* [Past Competitions](https://codingcompetitions.withgoogle.com/hashcode/archive)
 
 
 | Data      | Scores |
@@ -36,10 +36,10 @@ class Pizza(object):
 ### Team Class
 
 Team class stores the pizzas which are sent to the team. Add function of team class handles:
-- adds unique ingridient with union function
-- adds pizza to pizzas
-- marks pizza as selected
-- checks the capacity and already selected pizza error states
+* adds unique ingridient with union function
+* adds pizza to pizzas
+* marks pizza as selected
+* checks the capacity and already selected pizza error states
 
 ```python
 class Team():
@@ -74,8 +74,8 @@ class Team():
 
 ## Solver
 
-Solver takes a list of team and a list of pizzas as argument. The pizzas
-should already be sorted with count of ingredients. PART_SIZE is used to shorten the calculation process. When checking the potential pizza candidates how many sample will be check is determined with this size in `enumerate(pizzas[0:PART_SIZE])`.
+Solver takes a list of teams and a list of pizzas as argument. The pizzas
+should already be sorted with count of ingredients. `PART_SIZE` is used to shorten the calculation process. When checking the potential pizza candidates how many sample will be check is determined with this size in `enumerate(pizzas[0:PART_SIZE])`.
 
 ```python
 PART_SIZE=256
@@ -124,15 +124,15 @@ for i in range(len(teamL2)):
 pizzaLSorted = pizzaLSorted[n2:]
 solve(teamL2, pizzaLSorted)
 
-outF( filename.replace('data/','')+'.out', teamL2, teamL3, teamL4  
+outF( filename.replace('data/','')+'.out', teamL2, teamL3, teamL4 )
 ```
 
 
 ## My Other HashCode Repos
 
-- [Hash Code 2020- Online Qualification](https://github.com/mozanunal/hashcode2020)
-- [Hash Code 2018- Online Qualification](https://github.com/mozanunal/hashcode-2018-qualificationQuestion)
-- [Hash Code 2017- Practice & Online Qualification](https://github.com/mozanunal/NOP_HashCode2017)
+- [Hash Code 2020 - Online Qualification](https://github.com/mozanunal/hashcode2020)
+- [Hash Code 2018 - Online Qualification](https://github.com/mozanunal/hashcode-2018-qualificationQuestion)
+- [Hash Code 2017 - Practice & Online Qualification](https://github.com/mozanunal/NOP_HashCode2017)
 
 
 ## Team
