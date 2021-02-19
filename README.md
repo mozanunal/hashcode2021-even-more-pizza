@@ -1,6 +1,6 @@
 # Hashcode 2021 Even More Pizza
 
-Hashcode 2021 practice code solution our implementation. It is clean and readable 4 hours solution writen in Python.
+It is our implementation for Hashcode 2021 practice question. It is a clean and readable 4 hours solution writen in **Python**.
 
 
 | Data      | Scores |
