@@ -72,7 +72,7 @@ class Team():
         return len(self.pizzas) == self.cap
 ```
 
-## Solver
+### Solver
 
 Solver takes a list of teams and a list of pizzas as argument. The pizzas
 should already be sorted with count of ingredients. `PART_SIZE` is used to shorten the calculation process. When checking the potential pizza candidates how many sample will be check is determined with this size in `enumerate(pizzas[0:PART_SIZE])`.
@@ -95,7 +95,7 @@ def solve(teams, pizzas):
         team.add(pizzas[maxScoreIdx])
         pizzas.pop(maxScoreIdx)
 ```
-## Solving Process
+### Solving Process
 
 Solving start with 4 member teams. Since the score is calculated the **square** of the unique ingredients, filling 4 member teams first gives better result.
 
