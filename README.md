@@ -11,11 +11,11 @@ It is our implementation for Hashcode 2021 practice question. It is a clean and 
 | Data      | Scores |
 | ----------- | ----------- |
 | A – Example | 65 points |
-| B – A little bit of everything | 10,816 points |
-| C – Many ingredients | 646,200,381 points |
-| D – Many pizzas | 7,793,757 points |
-| E – Many teams | 6,029,429 points |
-| Total | 660,034,448 points |
+| B – A little bit of everything | 12,029 points |
+| C – Many ingredients | 708,861,140 points |
+| D – Many pizzas | 7,946,557 points |
+| E – Many teams | 10,847,445 points |
+| Total | 727,667,236 points |
 
 ## Solution
 
@@ -85,16 +85,19 @@ def solve(teams, pizzas):
         if len(pizzas) < 1:
             print('done--------------')
             break
-        maxScore = 0
-        maxScoreIdx = 0
-        for i, pizza in enumerate(pizzas[0:PART_SIZE]):
-            score = team.calcSc(pizza)
-            if score > maxScore:
-                maxScore = score
-                maxScoreIdx = i
-        team.add(pizzas[maxScoreIdx])
-        pizzas.pop(maxScoreIdx)
+        for i in range(team.cap):
+            maxScore = 0
+            maxScoreIdx = 0
+            for i, pizza in enumerate(pizzas[0:PART_SIZE]):
+                score = team.calcSc(pizza)
+                if score > maxScore:
+                    maxScore = score
+                    maxScoreIdx = i
+            team.add(pizzas[maxScoreIdx])
+            pizzas.pop(maxScoreIdx)
+            
 ```
+
 ### Solving Process
 
 Solving start with 4 member teams. Since the score is calculated the **square** of the unique ingredients, filling 4 member teams first gives better result.
@@ -103,25 +106,8 @@ Solving start with 4 member teams. Since the score is calculated the **square** 
 nPizza, n2, n3, n4, pizzaL, teamL2, teamL3, teamL4 = readF(filename)
 pizzaLSorted = sorted(pizzaL, key=operator.attrgetter('count'), reverse=True)
 #### initial add start ########
-it = iter(pizzaLSorted)
-for i in range(len(teamL4)):
-    teamL4[i].add(next(it))
-pizzaLSorted = pizzaLSorted[n4:]
 solve(teamL4, pizzaLSorted)
-solve(teamL4, pizzaLSorted)
-solve(teamL4, pizzaLSorted)
-
-it = iter(pizzaLSorted)
-for i in range(len(teamL3)):
-    teamL3[i].add(next(it))
-pizzaLSorted = pizzaLSorted[n3:]
 solve(teamL3, pizzaLSorted)
-solve(teamL3, pizzaLSorted)
-
-it = iter(pizzaLSorted)
-for i in range(len(teamL2)):
-    teamL2[i].add(next(it))
-pizzaLSorted = pizzaLSorted[n2:]
 solve(teamL2, pizzaLSorted)
 
 outF( filename.replace('data/','')+'.out', teamL2, teamL3, teamL4 )

@@ -54,32 +54,13 @@ def outF(filename, teamL2, teamL3, teamL4):
 def solveAll(filename):
     nPizza, n2, n3, n4, pizzaL, teamL2, teamL3, teamL4 = readF(filename)
     pizzaLSorted = sorted(pizzaL, key=operator.attrgetter('count'), reverse=True)
-    #### initial add start ########
-    it = iter(pizzaLSorted)
-    for i in range(len(teamL4)):
-        teamL4[i].add(next(it))
-    pizzaLSorted = pizzaLSorted[n4:]
     solve(teamL4, pizzaLSorted)
-    solve(teamL4, pizzaLSorted)
-    solve(teamL4, pizzaLSorted)
-    
-    it = iter(pizzaLSorted)
-    for i in range(len(teamL3)):
-        teamL3[i].add(next(it))
-    pizzaLSorted = pizzaLSorted[n3:]
     solve(teamL3, pizzaLSorted)
-    solve(teamL3, pizzaLSorted)
-
-    it = iter(pizzaLSorted)
-    for i in range(len(teamL2)):
-        teamL2[i].add(next(it))
-    pizzaLSorted = pizzaLSorted[n2:]
     solve(teamL2, pizzaLSorted)
-  
     outF( filename.replace('data/','')+'.out', teamL2, teamL3, teamL4  )
 
 
 solveAll("data/b_little_bit_of_everything.in")
 solveAll("data/c_many_ingredients.in")
 solveAll("data/d_many_pizzas.in")
-# solveAll("data/e_many_teams.in")
+solveAll("data/e_many_teams.in")
