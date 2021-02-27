@@ -60,7 +60,7 @@ def solveAll(filename):
     outF( filename.replace('data/','')+'.out', teamL2, teamL3, teamL4  )
 
 
-solveAll("data/b_little_bit_of_everything.in")
-solveAll("data/c_many_ingredients.in")
-solveAll("data/d_many_pizzas.in")
-solveAll("data/e_many_teams.in")
+solveAll("../data/b_little_bit_of_everything.in")
+solveAll("../data/c_many_ingredients.in")
+solveAll("../data/d_many_pizzas.in")
+solveAll("../data/e_many_teams.in")

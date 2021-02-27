@@ -91,7 +91,7 @@ func solveF(filename string) {
 }
 
 func main() {
-	filename := "data/b_little_bit_of_everything.in"
+	filename := "../data/b_little_bit_of_everything.in"
 	fmt.Println("--------", filename)
 	solveF(filename)
 	// fmt.Println("hello world")

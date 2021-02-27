@@ -32,7 +32,7 @@ func addPizza(team *Team, pizza *Pizza) {
 		team.ings[k] = true
 	}
 	pizza.selected = true
-	fmt.Println("Pizza:", pizza.index, "added to Team:", team.index)
+	fmt.Println("Pizza:", pizza.index, ":sc", pizza.count, "added to Team:", team.index)
 }
 
 func calcSc(team *Team, pizza *Pizza) int {
